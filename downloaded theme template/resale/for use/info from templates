@@ -1,13 +1,19 @@
 single.html -->  display specific single products data
 item:
     -title
-    -date & time
-    -ad id
+
     -images
     -price
     -item-condition 
     -item-type -category
     -discriptions
+
+ad:
+    -date & time
+    -ad id
+    -ad description
+
+
 
 owner:
     -city

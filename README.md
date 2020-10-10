@@ -1,5 +1,4 @@
-create project ***olx*** and select templates inside of <mark>downloaded theme template</mark> dir. 
+create ***product*** app's all models according to info from templates and register by admin
 
-from "downloaded theme template/resale/web" dir to "downloaded theme template/resale/for use" dir. 
+add data and image to model's fields also setup static+media files path in settings
 
-***info from templates*** file have all attribute which will be need to create model database
