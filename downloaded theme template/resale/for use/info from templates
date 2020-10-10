@@ -1,0 +1,37 @@
+single.html -->  display specific single products data
+item:
+    -title
+    -date & time
+    -ad id
+    -images
+    -price
+    -item-condition 
+    -item-type -category
+    -discriptions
+
+owner:
+    -city
+    -phone number
+
+
+login.html & register.html  --> 
+
+
+post-ad.html -->  display a panel to upload a add as post
+functions:
+    -login -registration -forget password
+    -post add
+
+index.html  --> nothing new
+
+feedback.html --> feedback by adding message and user info
+contact.html --> similar as feedback
+feedback
+contract
+
+categories.html --> nothing new
+
+all-classifieds.html --> 
+functions:
+    -filter
+    -search

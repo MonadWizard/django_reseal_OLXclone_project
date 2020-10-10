@@ -1,0 +1,3 @@
+django == 3
+pillow
+bootstrap4
