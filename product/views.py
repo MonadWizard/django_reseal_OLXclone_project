@@ -10,9 +10,9 @@ def productlist(request):
     return render(request,template_name, context)
 
 
-def productdetail(request, id):
-    print(id)
-    product_id = Product.objects.get(id=id)
+def productdetail(request, product_slug):
+    print(product_slug)
+    product_id = Product.objects.get(slug=product_slug)
 
     context = {'product_id' : product_id}
     template_name = 'product/product_detail.html'

@@ -1,10 +1,7 @@
 
-<h1>Our Products {{ products }}</h1>
+<h1>Our Products </h1>
 
 {% for product in products %}
 
-    <h2>{{ product.name }}</h2>
-    <h2>{{ product.category }}</h2>
-    <h2>{{ product.price }}</h2>
-
+    <h2><a href="{% url 'product:product_detail' product.slug %}">{{ product }}</a></h2>
 {% endfor %}
