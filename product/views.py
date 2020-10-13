@@ -1,26 +1,38 @@
 from django.shortcuts import render
-from .models import Product, ProductImages
+from .models import Product, ProductImages, Category
 
 from django.core.paginator import Paginator
+from django.db.models import Count # for count all data each category
+
+from django.shortcuts import get_object_or_404 
 
 # Create your views here.
 
-def productlist(request):
+def productlist(request, category_slug=None):
+    category = None
     products = Product.objects.all()  # product_list
+    categories = Category.objects.annotate(total_products=Count('product'))  #count data on each category_list
+
+    # display items by clicking on category
+    if category_slug:
+        category = get_object_or_404(Category, slug= category_slug)
+        products = products.filter(category=category)
+
 
     # pagination
     paginator = Paginator(products, 1) # Show 25 contacts per page.
-    page = request.GET.get('page') #page
+    page = request.GET.get('page') 
     products = paginator.get_page(page)
 
-    context = {'products': products}
+
+    context = {'products': products, 'categories':categories, 'category': category }
     template_name = 'product/product_list.html'
     return render(request,template_name, context)
 
 
 def productdetail(request, product_slug):
     print(product_slug)
-    productdetail = Product.objects.get(slug=product_slug)
+    productdetail = get_object_or_404(Product,slug=product_slug)
     productimages = ProductImages.objects.filter(product=productdetail)
 
     context = {'product_detail' : productdetail, 'product_images' : productimages}

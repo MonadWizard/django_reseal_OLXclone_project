@@ -1,4 +1,1 @@
-fix pagination for products list page..
-
-
-
+complete product detail view all link without search.

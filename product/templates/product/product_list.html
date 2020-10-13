@@ -15,23 +15,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="all-categories">
 				<h3> Select your category and find the perfect ad</h3>
 				<ul class="all-cat-list">
-					<li><a href="mobiles.html">Mobiles <span class="num-of-ads">(5,78,076)</span></a></li>
-					<li><a href="electronics-appliances.html">Electronics & Appliances <span
-								class="num-of-ads">(3,66,495)</span></a></li>
-					<li><a href="real-estate.html">Real Estate <span class="num-of-ads">(45,450)</span></a></li>
-					<li><a href="furnitures.html">Furniture <span class="num-of-ads">(1,77,145)</span></a></li>
-					<li><a href="pets.html">Pets <span class="num-of-ads">(1,81,250)</span></a></li>
-					<li><a href="books-sports-hobbies.html">Books, Sports & Hobbies <span
-								class="num-of-ads">(66,822)</span></a></li>
-					<li><a href="fashion.html">Fashion <span class="num-of-ads">(29,156)</span></a></li>
-					<li><a href="kids.html">Kids <span class="num-of-ads">(25,699)</span></a></li>
-					<li><a href="services.html">Services <span class="num-of-ads">(2,15,895)</span></a></li>
-					<li><a href="cars.html">Cars <span class="num-of-ads">(2,15,306)</span></a></li>
+					
+					{% for category in categories %}
+
+					<li><a href="{% url 'product:product_list_category' category.slug %}">{{category}} <span class="num-of-ads">{{category.total_products}}</span></a></li>
+
+					{% endfor %}
+
 				</ul>
 			</div>
 			<ol class="breadcrumb" style="margin-bottom: 5px;">
 				<li><a href="index.html">Home</a></li>
-				<li class="active">All Ads</li>
+				<li class="active"> <a href="{% url 'product:product_list' %}"> All Ads </a></li>
+
+				{% if category %}
+				
+				<li class="active">{{category}}</li>
+
+				{%endif%}
+
 			</ol>
 			<div class="ads-grid">
 				<div class="side-bar col-md-3">
@@ -89,46 +91,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="ads-display col-md-9">
 					<div class="wrapper">
 						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-							<ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
-								<li role="presentation" class="active">
-									<a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
-										aria-expanded="true">
-										<span class="text">All Ads</span>
-									</a>
-								</li>
-								<li role="presentation" class="next">
-									<a href="#profile" role="tab" id="profile-tab" data-toggle="tab"
-										aria-controls="profile">
-										<span class="text">Ads with Photos</span>
-									</a>
-								</li>
-								<li role="presentation">
-									<a href="#samsa" role="tab" id="samsa-tab" data-toggle="tab" aria-controls="samsa">
-										<span class="text">Company</span>
-									</a>
-								</li>
-							</ul>
+
 							<div id="myTabContent" class="tab-content">
 								<div role="tabpanel" class="tab-pane fade in active" id="home"
 									aria-labelledby="home-tab">
 									<div>
 										<div id="container">
-											<div class="view-controls-list" id="viewcontrols">
-												<label>view :</label>
-												<a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
-												<a class="listview active"><i
-														class="glyphicon glyphicon-th-list"></i></a>
-											</div>
-											<div class="sort">
-												<div class="sort-by">
-													<label>Sort By : </label>
-													<select>
-														<option value="">Most recent</option>
-														<option value="">Price: Rs Low to High</option>
-														<option value="">Price: Rs High to Low</option>
-													</select>
-												</div>
-											</div>
+
+
 											<div class="clearfix"></div>
 											<ul class="list">
 
