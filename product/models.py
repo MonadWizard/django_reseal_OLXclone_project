@@ -20,6 +20,8 @@ class Product(models.Model):
     condition = models.CharField(max_length=100, choices=(CONDITION_TYPE))
     price = models.DecimalField(max_digits=10, decimal_places=5)
     created = models.DateTimeField()
+    image = models.ImageField(upload_to='main_products/', blank=True, null=True)
+
     slug = models.SlugField(blank=True, null=True )
 
     # for new product if slug field empty then product-name make slug
