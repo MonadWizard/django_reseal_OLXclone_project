@@ -1,4 +1,4 @@
-fix pagination for products list page.
+fix pagination for products list page..
 
 
 
