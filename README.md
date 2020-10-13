@@ -1,5 +1,4 @@
-add and customize template for product and product details
-
+fix pagination for products list page.
 
 
 

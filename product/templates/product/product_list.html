@@ -157,18 +157,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										</div>
 									</div>
 								</div>
-								<ul class="pagination pagination-sm">
-									<li><a href="#">Prev</a></li>
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">6</a></li>
-									<li><a href="#">7</a></li>
-									<li><a href="#">8</a></li>
-									<li><a href="#">Next</a></li>
-								</ul>
+
+<!-- pagination -->
+
+{% if products.has_other_pages %}
+
+<ul class="pagination pagination-sm">
+	{% if products.has_previous %}
+		<li><a href="?page={{ products.previous_page_number }}">Prev</a></li>
+	{% else %}
+		<li class="disabled"></li>
+
+	{% endif %}
+
+	{% for pages in products.paginator.page_range %}
+		{% if products.number == pages %}
+			<li><a href="#">{{pages}}</a></li>
+		{% else %}
+			<li><a href="?page={{pages}}">{{pages}}</a></li>								
+		{% endif %}
+
+	{% endfor %}
+
+	{% if products.has_next %}
+		<li><a href="?page={{ products.next_page_number }}">Next</a></li>
+	{% else %}
+		<li class="disabled"></li>								
+	{% endif %}
+
+</ul>		
+{% endif %}
+
+
+<!-- pagination  -->
+
+
+
+
 							</div>
 						</div>
 					</div>
