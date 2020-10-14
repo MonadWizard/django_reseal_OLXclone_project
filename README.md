@@ -1,1 +1,1 @@
-complete product detail view all link without search.
+complete  search product on product detail view and complete all link .

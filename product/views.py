@@ -4,6 +4,10 @@ from .models import Product, ProductImages, Category
 from django.core.paginator import Paginator
 from django.db.models import Count # for count all data each category
 
+# for search we use   Complex lookups with Q objects
+from django.db.models import Q
+
+
 from django.shortcuts import get_object_or_404 
 
 # Create your views here.
@@ -17,6 +21,18 @@ def productlist(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug= category_slug)
         products = products.filter(category=category)
+    
+    # filter for search
+    search_query = request.GET.get('q')
+    if search_query :
+        products = products.filter(
+            Q(name__icontains = search_query) |
+            Q(brand__brand_name__icontains = search_query) |
+            Q(condition__icontains = search_query) |
+            Q(created__icontains = search_query)
+
+        )
+
 
 
     # pagination
@@ -31,7 +47,6 @@ def productlist(request, category_slug=None):
 
 
 def productdetail(request, product_slug):
-    print(product_slug)
     productdetail = get_object_or_404(Product,slug=product_slug)
     productimages = ProductImages.objects.filter(product=productdetail)
 
