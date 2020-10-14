@@ -36,7 +36,7 @@ def productlist(request, category_slug=None):
 
 
     # pagination
-    paginator = Paginator(products, 1) # Show 25 contacts per page.
+    paginator = Paginator(products, 3) # Show 25 contacts per page.
     page = request.GET.get('page') 
     products = paginator.get_page(page)
 
@@ -47,8 +47,10 @@ def productlist(request, category_slug=None):
 
 
 def productdetail(request, product_slug):
-    productdetail = get_object_or_404(Product,slug=product_slug)
+    productdetail = Product.objects.get(slug=product_slug)  # pick specific products
     productimages = ProductImages.objects.filter(product=productdetail)
+
+
 
     context = {'product_detail' : productdetail, 'product_images' : productimages}
     template_name = 'product/product_detail.html'
